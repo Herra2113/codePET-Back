@@ -1,30 +1,23 @@
 import { Router } from "express";
 import {
-  crearPublicacion,
-  obtenerPublicaciones,
-  obtenerPublicacion,
-  modificarPublicacion,
-  eliminarPublicacion,
-  filtrarPublicaciones,
-  habilitarPublicacion,
-  activarPublicacion,
-  obtenerPublicacionesActivas,
-} from "../controllers/publicaciones.controllers";
-import validarPublicacion from "../helpers/validacionPublicacion";
-import validacionPush from "../helpers/validacionPush";
+  crearPaciente,
+  obtenerPacientes,
+  obtenerPaciente,
+  editarPaciente,
+  borrarPaciente,
+} from "../controllers/paciente.contollers";
+import validacionPacientes from "../helpers/validacionPacientes";
 
 const router = Router();
 
-router.route("/").post(validarPublicacion, crearPublicacion);
-router.route("/").get(obtenerPublicaciones);
+router
+  .route("/")
+  .get(obtenerPacientes)
+  .post(validacionPacientes, crearPaciente);
 router
   .route("/:id")
-  .get(obtenerPublicacion)
-  .put(validarPublicacion, modificarPublicacion)
-  .delete(eliminarPublicacion);
-router.route("/activar/:id").put(activarPublicacion);
-router.route("/filtrar").post(filtrarPublicaciones);
-router.route("/all/activas").get(obtenerPublicacionesActivas);
-router.route("/push/:id").put(validacionPush, habilitarPublicacion);
+  .get(obtenerPaciente)
+  .put(validacionPacientes, editarPaciente)
+  .delete(borrarPaciente);
 
 export default router;
