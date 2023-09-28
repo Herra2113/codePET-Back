@@ -13,7 +13,7 @@ const validarTurno = [
   check("veterinario")
     .notEmpty()
     .withMessage("El veterinario es obligatorio")
-    .isIn(["karen diaz", "gerardo marruecos"])
+    .isIn(["rosales cecilia", "robles jorge"])
     .withMessage("Debe ingresar una categoria de veterinario valido"),
 
   check("mascota")
